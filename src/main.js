@@ -98,15 +98,16 @@ function analyzeSalesData(data, options) {
   });
   sellerSort.forEach((seller, index) => {
     seller.bonus = calculateBonus(index, sellerSort.length, seller)
-    seller.top_products = Object.entries(seller.products_sold)
+    const top_prod = Object.entries(seller.products_sold)
       .map(([key, value]) => ({
         sku: key,
         quantity: value,
       }))
-      .toSorted(function (a, b) {
+      .sort(function (a, b) {
         return b.quantity - a.quantity;
       })
       .slice(0, 10);
+      seller.top_products = top_prod;
   });
 
   return sellerSort.map((seller) => ({
