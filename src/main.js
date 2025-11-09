@@ -93,7 +93,7 @@ function analyzeSalesData(data, options) {
   });
 
   // @TODO: Подготовка итоговой коллекции с нужными полями
-  const sellerSort = sellerStats.toSorted(function (a, b) {
+  const sellerSort = sellerStats.sort(function (a, b) {
     return b.profit - a.profit;
   });
   sellerSort.forEach((seller, index) => {
