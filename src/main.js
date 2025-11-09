@@ -105,9 +105,9 @@ function analyzeSalesData(data, options) {
       }))
       .sort(function (a, b) {
         return b.quantity - a.quantity;
-      })
-      .slice(0, 10);
-      seller.top_products = top_prod;
+      });
+      
+      seller.top_products = top_prod.slice(0, 10);;
   });
 
   return sellerSort.map((seller) => ({
